@@ -1,0 +1,64 @@
+FORMAT: 1A
+HOST: https://polls.apiblueprint.org/
+
+# Tahsilat
+
+Polls is a simple API allowing consumers to view polls and vote in them.
+
+## Questions Collection [/questions]
+
+### List All Questions [GET]
+
++ Response 200 (application/json)
+{
+                "TahsilatListesi":[
+                {
+                  "ID": 1,
+                  "Tutar": "1000TL",
+                  "ParaBirimi": "TL",
+                  "İlgiliSiparis": "Defter Siparişi"
+                 
+                },{
+                  "ID": 2,
+                  "UrunAdi": "2000TL",
+                  "ParaBirimi": "TL",
+                  "İlgiliSiparis": "Defter Siparişi"
+                  
+                }
+               
+                ]  
+               
+            }
+       
+
+### Yeni Urun [POST]
+
+You may create your own question using this action. It takes a JSON
+object containing a question and a collection of answers in the
+form of choices.
+
++ Request (application/json)
+
+        {
+                "AdID": 1,
+                  "UrunAdi": "KalemTraş",
+                  "Kodu": "KTRŞ25",
+                  "Fiyati": "25",
+                  "ParaBirimi": "DOLAR",
+                  "StokAdeti": "20"
+                  
+            ]
+        }
+
++ Response 201 (application/json)
+
+    + Headers
+
+            Location: /questions/2
+
+    + Body
+
+            {
+                 "result": "Success",
+                 "message": "Kayıt işleminiz başarıyla yapılmıştır",
+            }
